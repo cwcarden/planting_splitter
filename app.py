@@ -3,19 +3,6 @@ import datetime
 from datetime import date 
 
 
-#Create CSV with headers based on Male or Female
-def create_csv():
-    
-    split_name = get_hybrid_code()
-    with open(f'{split_name}.csv', 'w', newline='') as file:
-        writer = csv.writer(file)
-        if is_male_first() == True:
-            writer.writerow(["First 1/3 Male", "Second 1/3 Male", "Last 1/3 Male", "Female"])
-            file.close()
-        else:
-            writer.writerow(["Female", "First 1/3 Male", "Second 1/3 Male", "Last 1/3 Male"])
-            file.close()
-
 #Get female or male first
 def is_male_first():
     male_first = input("Male or Female first? (Enter M or F):  ").upper()
@@ -24,6 +11,8 @@ def is_male_first():
     else:
         return False
 
+
+#Returns hybrid name for csv naming
 def get_hybrid_code():
     hybrid_code = input("Enter Fantasy Code or Hybrid name: ").upper()
     return hybrid_code
@@ -60,6 +49,8 @@ def diff_dates():
     delta = get_start_date() - get_end_date()
     return (delta * -1) / 6
 
+
+#gets user input data for planting splits returns dictionary of tuples
 def get_splits():
     female_split_doc = input("Are there days of change in the female? Y or N ").upper()
     if female_split_doc == "Y":
@@ -69,7 +60,6 @@ def get_splits():
     else:
         female_split = int(input("Enter female split ('EX' X would equal 0) "))
         female = (female_split,)
-
 
     first_male_split_doc = input("Are there days of change on first male? Y or N ").upper()
     if first_male_split_doc == "Y":
@@ -106,3 +96,17 @@ def get_splits():
         } 
 
     return planting_splits
+
+
+#Create CSV with headers based on Male or Female Named after get_hybrid_code() input
+def create_csv():
+    
+    split_name = get_hybrid_code()
+    with open(f'{split_name}.csv', 'w', newline='') as file:
+        writer = csv.writer(file)
+        if is_male_first() == True:
+            writer.writerow(["First 1/3 Male", "Second 1/3 Male", "Last 1/3 Male", "Female"])
+            file.close()
+        else:
+            writer.writerow(["Female", "First 1/3 Male", "Second 1/3 Male", "Last 1/3 Male"])
+            file.close()
