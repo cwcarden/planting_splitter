@@ -1,6 +1,7 @@
 import csv
 import datetime
 from datetime import date 
+import timedelta
 
 
 #Get female or male first
@@ -47,7 +48,10 @@ def get_end_date():
 
 def diff_dates():
     delta = get_start_date() - get_end_date()
-    return (delta * -1) / 6
+    return (delta.days * -1)
+
+def calc_dates():
+    return int(diff_dates() / 6)    # <- calculated and dependent on planting splits
 
 
 #gets user input data for planting splits returns dictionary of tuples
@@ -110,3 +114,14 @@ def create_csv():
         else:
             writer.writerow(["Female", "First 1/3 Male", "Second 1/3 Male", "Last 1/3 Male"])
             file.close()
+
+def gen_dates():
+    date1 = get_start_date()
+    date2 = get_end_date()
+    diff = diff_dates()
+    my_list = []
+    for day in range(diff):
+        a_date = (date1 + datetime.timedelta(days = day)).isoformat()
+        my_list.append(a_date)
+
+    print(my_list)
