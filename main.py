@@ -1,6 +1,5 @@
 import app
 
 if __name__ == "__main__":
-    app.get_start_date()
-    app.get_end_date()
+    app.get_male_split()
     app.create_csv()
