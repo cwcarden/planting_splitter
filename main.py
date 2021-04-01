@@ -1,6 +1,6 @@
 from doc_writer import create_csv
-import splits
+from splits import get_splits
 
 if __name__ == "__main__":
     create_csv()
-    splits.get_splits()
+    get_splits()

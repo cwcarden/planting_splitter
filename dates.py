@@ -35,14 +35,9 @@ def diff_dates():
     return (delta.days * -1)
 
 def calc_dates():
-    return diff_dates() / #<diviser comes from split data stored in dictionary of tuples in splits module
+    return diff_dates() / # <-diviser comes from split data stored in dictionary of tuples in splits module
 
 
-def gen_dates():
-    diff = diff_dates()
-    my_list = []
-    for day in range(diff):
-        a_date = (start_date + datetime.timedelta(days = day)).isoformat()
-        my_list.append(a_date)
-
-    print(my_list)
+def gen_female_dates():
+    #take start date to end date
+    
